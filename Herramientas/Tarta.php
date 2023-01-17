@@ -11,8 +11,7 @@ código para probar la clase.  -->
 include_once('Dulces.php');
 class Tarta extends Dulce
 {
-    private int $minNumComensales = 2;
-    public function __construct(string $nombre, int $numero, int $precio, private $rellenos = array(), private int $numPisos,private int $maxNumComensales)
+    public function __construct(string $nombre, int $numero, int $precio, private $rellenos = array(), private int $numPisos,  private int $maxNumComensales, private int $minNumComensales = 2)
     {
         parent::__construct($nombre, $numero, $precio);
     }
