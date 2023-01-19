@@ -11,7 +11,9 @@ cantidad de pedidos (el cuál supondremos que solo podrá pedir 1 dulce por pedi
 <?php
 class Cliente
 {
-    function __construct(public string $nombre, private int $numero, private $dulcesComprados = array(), private int $numDulcesComprados, private int $numPedidosEfectuados = 0)
+
+    private $dulcesComprados = array();
+    function __construct(public string $nombre, private int $numero, private int $numDulcesComprados, private int $numPedidosEfectuados = 0)
     {
     }
     public function getNumPedidosEfectuados()
@@ -34,34 +36,44 @@ class Cliente
         return $this->numDulcesComprados;
     }
 
-    public function comprar(Dulce $d): bool 
+    public function comprar(Dulce $d): bool
     {
         echo "<br>";
-        if (($this->tieneAlquilado($d) == false) && $this->numSoportesAlquilados < $this->maxAlquilerConcurrente) {
-            $this->numSoportesAlquilados++;
-            array_push($this->soportesAlquilados, $d);
-            echo "Compra de " . $d->nombre . " correcto <br>";
+        if (($this->listaDeDulces($d) == false)) {
+            $this->numPedidosEfectuados++;
+            array_push($this->dulcesComprados, $d);
+            echo "Compra de " . $d->nombre . " a nombre de " . $this->nombre . " correcto";
             return true;
         } else {
-            echo "El título: " . $d->nombre . " ya ha sido alquilado <br>";
+            echo  $d->nombre . " no se puede comprar <br>";
             return false;
         }
     }
     public function listaDeDulces(Dulce $d): bool
     {
-        if (in_array($d, $this->soportesAlquilados)) {
+        if (in_array($d, $this->dulcesComprados)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function listaAlquileres()
+    public function valorar(Dulce $d, String $valoracion)
     {
-        for ($i = 0; $i < count($this->soportesAlquilados); $i++) {
-            if ($i != count($this->soportesAlquilados) - 1) {
-                echo "<br>" . $this->soportesAlquilados[$i]->titulo .  " esta alquilado <br>";
-            }
+        echo '<br>';
+        if (($this->listaDeDulces($d) == true)) {
+            echo $this->nombre . ' ha comentado sobre ' . $d->nombre . ' : ' . $valoracion . '<br>';
+        } else {
+            echo 'Este dulce no lo ha comprado este Usuario';
         }
+    }
+
+    public function listaPedidos()
+    {echo '<br> ---------------------------------------------------------------------------- <br>';
+        echo 'Lista de pedidos de ' . $this->nombre . ' :';
+        for ($i = 0; $i < count($this->dulcesComprados); $i++) {
+            echo '<br>' . $this->dulcesComprados[$i]->nombre;
+        }
+        echo '<br> ----------------------------------------------------------------------------';
     }
 }
