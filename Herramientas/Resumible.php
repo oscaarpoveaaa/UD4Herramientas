@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Herramientas;
 
 include_once("../autoload.php");

@@ -3,7 +3,8 @@ namespace Herramientas;
 
 
 include_once("../autoload.php");
-class Bollo extends Dulce
+class Bollo extends Dulce implements Resumible
+
 {
 
     public function __construct(string $nombre, int $numero, int $precio, private string $relleno)

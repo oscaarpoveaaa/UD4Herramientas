@@ -2,7 +2,7 @@
 namespace Herramientas;
 
 include_once("../autoload.php");
-class Tarta extends Dulce
+class Tarta extends Dulce implements Resumible
 {
     public function __construct(string $nombre, int $numero, int $precio, private $rellenos = array(), private int $numPisos,  private int $maxNumComensales, private int $minNumComensales = 2)
     {

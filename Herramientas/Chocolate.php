@@ -2,7 +2,7 @@
 namespace Herramientas;
 
 include_once("../autoload.php");
-class Chocolate extends Dulce 
+class Chocolate extends Dulce implements Resumible
 {
 
     public function __construct(string $nombre, int $numero, int $precio, private int $porcentajeCacao, private int $peso )
