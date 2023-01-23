@@ -1,14 +1,9 @@
-<!-- 1. Crea una clase para almacenar soportes (Dulces.php). Esta clase será la clase padre 
-de los diferentes dulces con los que trabaje nuestra pastelería (bollos, tartas y 
-chocolates). 
-Crea el constructor que inicialice sus propiedades. Fíjate que la clase no tiene métodos 
-setters. 
-Definir una constante mediante un propiedad privada y estática denominada `IVA con 
-un valor del 21%. Crea un fichero llamado index1.php donde cree un objeto Dulce y 
-muestre sus propiedades por pantalla.  -->
-
 <?php
-class Dulce
+namespace Herramientas;
+
+include_once("Resumible.php");
+
+abstract class Dulce implements Resumible
 {
     public const IVA = 0.21;
 

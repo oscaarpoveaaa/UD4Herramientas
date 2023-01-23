@@ -1,14 +1,7 @@
-<!-- 3. Crea la clase Tarta la cual hereda de Dulce. Añade los atributos: relleno, número de 
-pisos, habrá tantos rellenos en el array como pisos tenga la tarta; y los atributos 
-minNumComensales (por defecto 2) y maxNumComensales.  
-A continuación, añade el método muestraComensalesPosibles, el cual debe mostrar 
-Para dos comensales, Para X comensales o De X a Y comensales dependiendo de los 
-valores de los atributos creados (min y maxNumComensales). Finalmente, sobrescribe 
-tanto el constructor como el método muestraResumen. En index4.php genere el 
-código para probar la clase.  -->
-
 <?php
-include_once('Dulces.php');
+namespace Herramientas;
+
+include_once("../autoload.php");
 class Tarta extends Dulce
 {
     public function __construct(string $nombre, int $numero, int $precio, private $rellenos = array(), private int $numPisos,  private int $maxNumComensales, private int $minNumComensales = 2)

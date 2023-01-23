@@ -1,6 +1,7 @@
-
-
 <?php
+namespace Herramientas;
+
+include_once("../autoload.php");
 class Pasteleria
 {
     private $productos = array();

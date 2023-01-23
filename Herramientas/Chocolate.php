@@ -1,10 +1,8 @@
-<!-- Crea la clase Chocolate la cual hereda de Dulce. Añade los atributos porcentaje de 
-cacao y peso. A continuación, sobrescribe tanto el constructor como el método 
-muestraResumen. En index3.php genere el código para probar la clase. -->
-
 <?php
-include_once('Dulces.php');
-class Chocolate extends Dulce
+namespace Herramientas;
+
+include_once("../autoload.php");
+class Chocolate extends Dulce 
 {
 
     public function __construct(string $nombre, int $numero, int $precio, private int $porcentajeCacao, private int $peso )

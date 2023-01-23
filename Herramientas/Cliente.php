@@ -1,14 +1,7 @@
-<!-- 3. Crear la clase Cliente. El constructor recibirá el nombre, número y 
-numPedidosEfectuados, este último pudiendo ser opcional y tomando como valor por 
-defecto 0. Tras ello, añade getter/setters necesarios, no olvide el getter a 
-numPedidosEfectuados (este campo va a almacenar un contador del total de pedidos 
-que ha realizado). El array de dulcesComprados contendrá clases que hereden de 
-Dulce. Finalmente, añade el método muestraResumen que muestre el nombre y la 
-cantidad de pedidos (el cuál supondremos que solo podrá pedir 1 dulce por pedido).  -->
-
-
-
 <?php
+namespace Herramientas;
+include_once("../autoload.php");
+
 class Cliente
 {
 

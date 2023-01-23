@@ -1,9 +1,8 @@
-<!-- 2. Crea la clase Bollo la cual hereda de Dulce. Añade el atributo relleno. A 
-continuación, sobrescribe tanto el constructor como el método muestraResumen. 
-En index2.php genere el código para probar la clase.  -->
-
 <?php
-include_once('Dulces.php');
+namespace Herramientas;
+
+
+include_once("../autoload.php");
 class Bollo extends Dulce
 {
 
