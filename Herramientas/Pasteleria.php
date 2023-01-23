@@ -2,6 +2,9 @@
 namespace Herramientas;
 
 include_once("../autoload.php");
+use util\ClienteNoEncontradoException;
+use util\DulceNoEncontradoException;
+
 class Pasteleria
 {
     private $productos = array();
@@ -52,7 +55,34 @@ class Pasteleria
         }
     }
     public function comprarClienteProducto($numeroCliente,$numeroDulce){
-
+        $saveCliente = "";
+        $dulce = "";
+        try {
+            foreach ($this->clientes as $key) {
+                if ($key->getNumero() == $numeroCliente) {
+                    $saveCliente = $key;
+                        foreach ($this->productos as $prod) {
+                    
+                            if ($prod->getNumero() == $numeroDulce) {
+                                $dulce = $prod;
+                                $saveCliente->comprar($dulce);
+                                return $this;
+                            }
+                        }
+                        if($dulce == null){
+                            throw new DulceNoEncontradoException();
+                        }
+                }
+            }
+            if ($saveCliente == "") {
+                throw new ClienteNoEncontradoException();
+            }
+        } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMessage();
+        } catch (DulceNoEncontradoException $e) { 
+            echo $e->getMessage();
+        }
+        return $this;
     }
     
     public function getNumProductos()

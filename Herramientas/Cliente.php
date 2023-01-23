@@ -1,5 +1,6 @@
 <?php
 namespace Herramientas;
+use util\DulceNoCompradoException;
 include_once("../autoload.php");
 
 class Cliente
@@ -38,8 +39,7 @@ class Cliente
             echo "Compra de " . $d->nombre . " a nombre de " . $this->nombre . " correcto";
             return true;
         } else {
-            echo  $d->nombre . " no se puede comprar <br>";
-            return false;
+            throw new DulceNoCompradoException();
         }
     }
     public function listaDeDulces(Dulce $d): bool
