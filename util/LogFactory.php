@@ -1,6 +1,6 @@
 <?php
     namespace util;
-    include_once("../vendor/autoload.php");
+    include_once("./autoload.php");
 
     use Monolog\Logger;
     use Monolog\Handler\StreamHandler;

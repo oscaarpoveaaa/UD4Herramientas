@@ -1,7 +1,7 @@
 <?php
-namespace tests;
+namespace tests\Model;
 
-include_once("../vendor/autoload.php");
+include_once("./autoload.php");
 
 use PHPUnit\Framework\TestCase;
 use Herramientas\Tarta;

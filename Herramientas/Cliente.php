@@ -6,7 +6,7 @@ use util\ClienteNoEncontradoException;
 use util\DulceNoEncontradoException;
 use util\LogFactory;
 
-include_once("../autoload.php");
+include_once("./autoload.php");
 
 class Cliente
 {
