@@ -1,14 +1,21 @@
 <?php
 namespace Herramientas;
 use util\DulceNoCompradoException;
+use Monolog\Logger;
+use util\ClienteNoEncontradoException;
+use util\DulceNoEncontradoException;
+use util\LogFactory;
+
 include_once("../autoload.php");
 
 class Cliente
 {
-
+    private Logger $log;
     private $dulcesComprados = array();
     function __construct(public string $nombre, private int $numero, private int $numDulcesComprados, private int $numPedidosEfectuados = 0)
     {
+        $this->log = LogFactory::getLogger();
+
     }
     public function getNumPedidosEfectuados()
     {
@@ -39,6 +46,7 @@ class Cliente
             echo "Compra de " . $d->nombre . " a nombre de " . $this->nombre . " correcto";
             return true;
         } else {
+            $this->log->critical("El dulce no se ha comprado");
             throw new DulceNoCompradoException();
         }
     }

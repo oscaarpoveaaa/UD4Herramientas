@@ -2,16 +2,20 @@
 namespace Herramientas;
 
 include_once("../autoload.php");
+
+use Monolog\Logger;
 use util\ClienteNoEncontradoException;
 use util\DulceNoEncontradoException;
+use util\LogFactory;
 
 class Pasteleria
 {
+    private Logger $log;
     private $productos = array();
     private $clientes = array();
-    private int $numProductos;
     function __construct(private string $nombre, private int $numClientes)
     {
+        $this->log = LogFactory::getLogger();
     }
 
     private function incluirProducto(Dulce $producto){
@@ -70,11 +74,13 @@ class Pasteleria
                             }
                         }
                         if($dulce == null){
+                        $this->log->warning("El dulce no se ha encontrado");
                             throw new DulceNoEncontradoException();
                         }
                 }
             }
             if ($saveCliente == "") {
+                $this->log->alert("El cliente no se ha encontrado");
                 throw new ClienteNoEncontradoException();
             }
         } catch (ClienteNoEncontradoException $e) {

@@ -20,6 +20,11 @@ class Bollo extends Dulce implements Resumible
         echo "Nombre: " . $this->nombre . "<br>Número: " . $this->numero . "<br>Precio: " . $this->getPrecio() . "€ " .
             "<br>Precio con IVA: " . $this->getPrecioConIva() . "<br>" . "Relleno: " . $this->relleno . "<br>";
     }
+
+    public function getNumero()
+    {
+        return $this->numero;
+    }
 }
 
 
